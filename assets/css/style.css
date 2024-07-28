@@ -107,6 +107,12 @@ input {
 .grid {
     display: grid;
 }
+.section {
+    padding-top: 3.75rem;
+    padding-bottom: 3.75rem;
+}
+
+
 /* header */
 .header {
     position: absolute;
@@ -143,12 +149,20 @@ input {
 .nav__toggle {
     display: none;
 }
+/* Active Link */
+.active-link {
+    opacity: 0.5;
+}
+.active-link::after {
+    opacity: 1;
+}
 /* home */
 .home {
     background-image: url(../img/profile-picture.jpg);
     background-size: cover;
     background-position: 70% 30%;
     padding-top: 5.5rem;
+    margin-bottom: 3.5rem;
     position: relative;
 }
 .home::before {
