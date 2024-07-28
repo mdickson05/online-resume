@@ -96,9 +96,8 @@ input {
     border: none;
     outline: none;
 }
-/* Reusable CSS */
+
 .container {
-    /* background-color: red; */
     max-width: 1140px;
     margin: 0 auto;
     padding-left: 0.9rem;
