@@ -36,3 +36,63 @@
     --semibold: 600;
     --bold: 700;
 }
+
+/* Styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body,
+button,
+input,
+textarea {
+    font-family: var(--roboto-font);
+    font-size: var(--fs-base);
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.5em;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--mono-font);
+    font-weight: var(--bold);
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    cursor: pointer;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+textarea,
+input {
+    background: none;
+    border: none;
+    outline: none;
+}
