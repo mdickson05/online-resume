@@ -107,6 +107,42 @@ input {
 .grid {
     display: grid;
 }
+/* header */
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+} 
+.nav {
+    height: calc(var(--header-height) + 0.875rem);
+    display: flex;
+    align-items: flex-end;
+}
+.nav__list {
+    display: flex;
+    column-gap: 3.25rem;
+}
+
+.nav__link {
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: var(--bold);
+    font-family: var(--mono-font);
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.nav__link:hover
+{
+    opacity: 0.5;
+}
+
+.nav__close,
+.nav__toggle {
+    display: none;
+}
 /* home */
 .home {
     background-image: url(../img/profile-picture.jpg);
