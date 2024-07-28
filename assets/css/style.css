@@ -19,5 +19,20 @@
     --bg-color-alt: #e9ecef;
     --border-color: #f1f1f1;
 
-    /**/
+    /* font families */
+    --roboto-font: 'Roboto', sans-serif;
+    --mono-font: 'Roboto Mono', monospace;
+
+    /* font size */
+    --fs-h1: 2.75rem;
+    --fs-h2: 2.25rem;
+    --fs-lg: 1.125rem;
+    --fs-base: 1rem;
+    --fs-sm: 0.875rem;
+    --fs-xs: 0.75rem;
+
+    /* font weight */
+    --medium: 500;
+    --semibold: 600;
+    --bold: 700;
 }
