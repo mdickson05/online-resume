@@ -1,2 +1,23 @@
+/* Font API */
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 
+/* Variables */
+:root {
+    --header-height: 3.5rem;
+    /* Colours */
+    --primary-color: #4a4a4a;
+    --primary-color-alt: #575757;
+    --linear-gradient: linear-gradient(
+    54deg, 
+    rgba(45, 45, 45, 0.95) 34%, 
+    rgba(45, 45, 45, 0.95)
+    );
+    --title-color: #4a4a4a;
+    --text-color: #555;
+    --text-color-alt: #999;
+    --bg-color: #fff;
+    --bg-color-alt: #e9ecef;
+    --border-color: #f1f1f1;
+
+    /**/
+}
