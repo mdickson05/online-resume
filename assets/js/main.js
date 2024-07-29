@@ -31,3 +31,47 @@ var testiSwiper = new Swiper(".testimonial__container", {
     mousewheel: true,
     keyboard: true,
 });
+
+// Contact Form
+const contactForm = document.getElementById('contact-form'),
+contactName = document.getElementById('contact-name'),
+contactEmail = document.getElementById('contact-email'),
+Message = document.getElementById('message'),
+contactMessage = document.getElementById('contact-message');
+
+const sendEmail = (e) => {
+    e.preventDefault();
+    // check if the field is not empty first
+    if (
+        contactName.value === '' || 
+        contactEmail.value === '' ||
+        Message.value === ''
+    ) {
+        // make the Message text above the button change colour
+        contactMessage.classList.remove('color-light');
+        contactMessage.classList.add('color-dark');
+
+        // Show a new message
+        contactMessage.textContent = 'Write all the input fields';
+    } else {
+        // serviceID - templateID - #form - publickey
+        emailjs.sendForm(
+            'service_csloze7',
+            'template_s08bmol',
+            '#contact-form', 
+            'N5D1wHPHY2jFXNXdT'
+        )
+        .then( () => {
+            // show message and add colour
+            contactMessage.classList.add('color-light');
+            contactMessage.textContent = 'Message sent ✔️';
+
+            // remove message after 5 seconds
+            setTimeout(() => {
+                contactMessage.textContent = '';
+            }, 5000);
+        });
+    }
+}
+
+contactForm.addEventListener('submit', sendEmail);
