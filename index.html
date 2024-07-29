@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- remixicons -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
-    
+    <!-- Swiper.js -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
     
@@ -388,25 +389,36 @@
                 <div class="testimonial__icon">
                     <i class="ri-double-quotes-r"></i>
                 </div>
-                <div class="testimonial__container container">
-                    <div class="testimonial__item">
-                        <h3 class="author__name text-lg">Watch this space!</h3>
-                        <p class="author__project">Work in Progress...</p>
-                        <div class="ruler"></div>
-                        <p class="testimonial__description text-lg">For any prospective employers, this presents a great opportunity for you. Hire me and you will get the chance to be the first testimonial on my page!</p>
+                <div class="swiper testimonial__container container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide testimonial__item">
+                            <h3 class="author__name text-lg">Watch this space!</h3>
+                            <p class="author__project">Work in Progress...</p>
+                            <div class="ruler"></div>
+                            <p class="testimonial__description text-lg">For any prospective employers, 
+                                this presents a great opportunity for you. Hire me and you will get the chance 
+                                to be the first testimonial on my page!</p>
+                        </div>
+                        <div class="swiper-slide testimonial__item">
+                            <h3 class="author__name text-lg">A working button?</h3>
+                            <p class="author__project">WOW! I'm a tech guru!</p>
+                            <div class="ruler"></div>
+                            <p class="testimonial__description text-lg">Do you want working buttons on your website? 
+                                If so, you should hire me.</p>
+                        </div>
                     </div>
-                    <div class="testimonial__item">
-                        <h3 class="author__name text-lg">A working button?</h3>
-                        <p class="author__project">You're a tech guru!</p>
-                        <div class="ruler"></div>
-                        <p class="testimonial__description text-lg">Guess what? Another opportunity to be featured on my page. All you have to do is hire me!</p>
-                    </div>
+
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
                 </div>
             </div>
         </section>
     </main>
     <!-- Mixitup -->
-     <script src="assets/js/mixitup.min.js"></script>
+    <script src="assets/js/mixitup.min.js"></script>
+    <!-- Swiper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <!-- Javascript -->
     <script src="assets/js/main.js"></script>
 </body>
