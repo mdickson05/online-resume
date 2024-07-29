@@ -548,3 +548,33 @@ input {
     background-color: #a98a79;
     margin-bottom: 1.25rem;
 }
+
+/* Testimonials - swiper.js */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    content: '';
+}
+
+.swiper-button-next img,
+.swiper-button-prev img {
+    width: 20px;
+    height: 20px;
+}
+
+.swiper-pagination-bullets.swiper-pagination-horizontal {
+    bottom: 3.25rem;
+}
+
+.swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 1px solid #fff;
+    opacity: 1;
+    margin: 0 3px !important;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #fff;
+}
