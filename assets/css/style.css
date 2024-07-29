@@ -670,6 +670,13 @@ input {
     box-shadow: inset 0 0 5px 0 #fff;
 }
 
+.contact__message {
+    position: absolute;
+    bottom: 34%;
+    left: 0;
+    font-family: var(--mono-font);
+}
+
 .contact__button {
     margin-top: 1.875rem;
     width: 100%;
