@@ -276,3 +276,67 @@ input {
     align-items: flex-start;
     column-gap: 0.3rem;
 }
+/* Skills */
+.skills__container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.875rem;
+}
+
+.skills__item {
+    border: 1px solid var(--border-color);
+    padding: 2.5rem 1.25rem 1.875rem;
+    text-align: center;
+}
+
+.icon__box {
+    border: 1px solid var(--border-color);
+    width: 82px;
+    height: 82px;
+    border-radius: 50%;
+    margin-bottom: 1.25rem;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+}
+
+.skills__icon {
+    width: 32px;
+    margin: auto;
+}
+
+.skills__dot {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    animation: skills-dot 2s linear infinite;
+    animation-play-state: paused;
+}
+
+.skills__item:hover .skills__dot {
+    animation-play-state: running;
+}
+
+@keyframes skills-dot {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(1turn);
+    }
+}
+
+.dot {
+    width: 13px;
+    height: 13px;
+    background-color: var(--title-color);
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0.9rem;
+}
+
+.skills__title {
+    margin-bottom: 0.8em;
+}
