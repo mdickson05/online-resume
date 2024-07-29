@@ -675,3 +675,9 @@ input {
     width: 100%;
     box-shadow: 0 1px 29px rgb(0 0 0 / 40%);
 }
+
+.footer__copy {
+    opacity: 0.4;
+    margin-top: 3.75rem;
+    text-align: center;
+}
