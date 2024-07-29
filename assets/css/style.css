@@ -341,6 +341,27 @@ input {
     margin-bottom: 0.8em;
 }
 
+.skills__proficiency {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.625rem;
+}
+
+.skills__bar,
+.skills__percentage {
+    height: 5px;
+    border-radius: 0.25rem;
+}
+
+.skills__bar {
+    background-color: var(--bg-color-alt);
+    margin-bottom: 1.25rem;
+}
+
+.skills__percentage {
+    display: block;
+    background-color: var(--primary-color);
+}
 /* Resume */
 .resume__container {
     grid-template-columns: repeat(2,1fr);
