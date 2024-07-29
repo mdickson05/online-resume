@@ -9,14 +9,24 @@ let mixerProjects = mixitup('.project__container', {
 });
 
 // Active Work
-const linkWork = document.querySelectorAll('.category__btn');
+const work = document.querySelectorAll('.category__btn');
 
 function activeWork() {
-    linkWork.forEach((a) => a.classList.remove('active-work'));
+    work.forEach((a) => a.classList.remove('active-work'));
     this.classList.add('active-work');
 }
 
-linkWork.forEach((a) => a.addEventListener('click', activeWork));
+work.forEach((a) => a.addEventListener('click', activeWork));
+
+// Active link
+const link = document.querySelectorAll('.nav__link');
+
+function activeLink() {
+    link.forEach((a) => a.classList.remove('active-link'));
+    this.classList.add('active-link');
+}
+
+link.forEach((a) => a.addEventListener('click', activeLink));
 
 // Swiper.js
 var testiSwiper = new Swiper(".testimonial__container", {
@@ -61,16 +71,26 @@ const sendEmail = (e) => {
             '#contact-form', 
             'N5D1wHPHY2jFXNXdT'
         )
-        .then( () => {
-            // show message and add colour
-            contactMessage.classList.add('color-light');
-            contactMessage.textContent = 'Message sent ✔️';
+        .then( 
+            () => {
+                // show message and add colour
+                contactMessage.classList.add('color-light');
+                contactMessage.textContent = 'Message sent ✔️';
 
-            // remove message after 5 seconds
-            setTimeout(() => {
-                contactMessage.textContent = '';
-            }, 5000);
-        });
+                // remove message after 5 seconds
+                setTimeout(() => {
+                    contactMessage.textContent = '';
+                }, 5000);
+            },
+            (error) => {
+                alert('Sorry, an unknown error has occurred with the contact form. Please try again!',  error);
+            }
+        );
+
+        // clear input fields
+        contactName.value = '';
+        contactEmail.value = '';
+        Message.value = '';
     }
 }
 
