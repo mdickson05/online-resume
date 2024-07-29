@@ -124,6 +124,10 @@ input {
     font-size: var(--fs-sm);
     line-height: 1.43em;
 }
+.text-xs {
+    font-size: var(--fs-xs);
+    line-height: 1.5em;
+}
 
 /* header */
 .header {
@@ -406,4 +410,25 @@ input {
 
 .experience__description {
     text-align: justify;
+}
+/* Projects */
+.project__categories {
+    display: flex;
+    column-gap: 3rem;
+    margin-bottom: 1.875rem;
+}
+
+.category__btn {
+    color: var(--text-color-alt);
+    font-weight: var(--bold);
+    font-family: var(--mono-font);
+    position: relative;
+}
+
+.category__btn:hover {
+    color: var(--primary-color);
+}
+
+.active-work {
+    color: var(--primary-color);
 }
