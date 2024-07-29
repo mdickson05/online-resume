@@ -305,14 +305,26 @@
             <h2 class="section__title">Work</h2>
 
             <div class="project__categories">
-                <button class="category__btn text-xs active-work">ALL</button>
-                <button class="category__btn text-xs">PYTHON</button>
-                <button class="category__btn text-xs">WEB DEV</button>
-                <button class="category__btn text-xs">JAVA</button>
+                <button class="category__btn text-xs active-work" 
+                data-filter="all">
+                ALL
+            </button>
+                <button class="category__btn text-xs"
+                data-filter=".python">
+                    PYTHON
+                </button>
+                <button class="category__btn text-xs" 
+                data-filter=".web">
+                    WEB DEV
+                </button>
+                <button class="category__btn text-xs" 
+                data-filter=".java">
+                    JAVA
+                </button>
             </div>
 
             <div class="project__container grid">
-                <div class="project__item grid">
+                <div class="project__item grid mix python">
                     <img src="assets/img/python-puzzles.svg" alt="" 
                     class="project__img">
                     <div class="project__data">
@@ -325,7 +337,7 @@
                         <a href="https://github.com/mdickson05/50pythonpuzzles" class="project__link text-sm">github.com</a>
                     </div>
                 </div>
-                <div class="project__item grid">
+                <div class="project__item grid mix python">
                     <img src="assets/img/python-poker.svg" alt="" 
                     class="project__img">
                     <div class="project__data">
@@ -338,7 +350,7 @@
                         <a href="https://github.com/mdickson05/python_poker" class="project__link text-sm">github.com</a>
                     </div>
                 </div>
-                <div class="project__item grid">
+                <div class="project__item grid mix web">
                     <img src="assets/img/odin-recipes.png" alt="" 
                     class="project__img">
                     <div class="project__data">
@@ -354,7 +366,7 @@
 
                     </div>
                 </div>
-                <div class="project__item grid">
+                <div class="project__item grid mix java">
                     <img src="assets/img/apa-referencer.png" alt="" 
                     class="project__img">
                     <div class="project__data">
@@ -370,6 +382,8 @@
             </div>
         </section>
     </main>
+    <!-- Mixitup -->
+     <script src="assets/js/mixitup.min.js"></script>
     <!-- Javascript -->
     <script src="assets/js/main.js"></script>
 </body>
