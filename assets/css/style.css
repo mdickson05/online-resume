@@ -723,3 +723,21 @@ input {
     margin-top: 3.75rem;
     text-align: center;
 }
+
+/* Breakpoints */
+/* Large devices */
+@media screen and (max-width:1200px) {
+    .container {
+        max-width: 960px;
+    }
+
+    .home__container {
+        grid-template-columns: 5fr 7fr;
+    }
+
+    .skills__container {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 1.875rem;
+    }
+}
+
