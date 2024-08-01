@@ -727,6 +727,15 @@ input {
 /* Breakpoints */
 /* Large devices */
 @media screen and (max-width:1200px) {
+
+    :root {
+        --fs-h1: 2.25rem;
+        --fs-h2: 1.75rem;
+        --fs-lg: 1rem;
+        --fs-base: 0.938rem;
+        --fs-sm: 0.813rem;
+        --fs-xs: 0.687rem;
+    }
     .container {
         max-width: 960px;
     }
@@ -741,6 +750,7 @@ input {
     }
 }
 
+/* Medium devices */
 @media screen and (max-width: 992px) {
     .container {
         max-width: 720px;
@@ -826,4 +836,53 @@ input {
     .contact__container {
         grid-template-columns: 5fr 7fr;
     }
+}
+
+/* for small devices */
+@media screen and (max-width: 768px) {
+    .container {
+        max-width: 540px;
+    }
+
+    .contact__container,
+    .skills__container {
+        grid-template-columns: 1fr;
+    }
+
+    .project__data {
+        padding: 2rem 1.25rem 1.5rem 1.25rem;
+    }
+
+    .testimonial__item {
+        padding: 0 3rem;
+    }
+
+    .contact__container {
+        row-gap: 2rem;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .home {
+        padding: 4.4rem;
+    }
+
+    .project__categories {
+        column-gap: 1.5rem;
+    }
+
+    .tags li {
+        margin-bottom: 0.6rem;
+    }
+
+    .testimonial__item {
+        padding: 0 1.5rem;
+    }
+
+    .swiper-button-next img,
+    .swiper-button-prev img {
+        width: 1.125rem;
+        height: 1.125rem;
+    }
+
 }
