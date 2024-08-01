@@ -8,15 +8,16 @@ let mixerProjects = mixitup('.project__container', {
     }
 });
 
-// Active Work
-const work = document.querySelectorAll('.category__btn');
-
-function activeWork() {
-    work.forEach((a) => a.classList.remove('active-work'));
-    this.classList.add('active-work');
+// Background Header
+function scrollHeader() {
+    const header = document.getElementById('header');
+    // When the scroll > 50 viewport height, 
+    // add the scroll header class
+    if(this.scrollY >= 50) header.classList.add('scroll-header');
+    else header.classList.remove('scroll-header');
 }
-
-work.forEach((a) => a.addEventListener('click', activeWork));
+    
+window.addEventListener('scroll', scrollHeader);
 
 // Active link
 const link = document.querySelectorAll('.nav__link');
@@ -27,6 +28,16 @@ function activeLink() {
 }
 
 link.forEach((a) => a.addEventListener('click', activeLink));
+
+// Active Work
+const work = document.querySelectorAll('.category__btn');
+
+function activeWork() {
+    work.forEach((a) => a.classList.remove('active-work'));
+    this.classList.add('active-work');
+}
+
+work.forEach((a) => a.addEventListener('click', activeWork));
 
 // Swiper.js
 var testiSwiper = new Swiper(".testimonial__container", {

@@ -137,6 +137,7 @@ input {
     left: 0;
     width: 100%;
     z-index: 100;
+    transition: 0.3s;
 } 
 .nav {
     height: calc(var(--header-height) + 0.875rem);
@@ -172,6 +173,31 @@ input {
 }
 .active-link::after {
     opacity: 1;
+}
+
+/* Scroll Header */
+.scroll-header 
+{
+    position: fixed;
+    background-color: var(--bg-color);
+    box-shadow: 0 5px 8px 0 rgb(0 0 0 / 14%);
+}
+
+.scroll-header .nav__link {
+    color: var(--text-color);
+}
+
+.scroll-header .nav {
+    align-items: center;
+}
+
+.scroll-header .nav__link::after {
+    background-color: var(--text-color);
+}
+
+.scroll-header .nav__link:hover,
+.scroll-header .active-link {
+    color: var(--primary-color);
 }
 /* home */
 .home {
