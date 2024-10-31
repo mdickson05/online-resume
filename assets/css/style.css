@@ -61,6 +61,8 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.5em;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 h1,
@@ -89,6 +91,7 @@ button {
 img {
     max-width: 100%;
     height: auto;
+    display: block;
 }
 
 textarea,
@@ -106,25 +109,34 @@ input {
 
 .grid {
     display: grid;
+    width: 100%;
+    gap: 1rem;
 }
+
 .section {
     padding-top: 4rem;
     padding-bottom: 4rem;
+    width: 100%;
+    overflow: hidden;
 }
+
 .section__title {
     font-size: var(--fs-h2);
     line-height: 1.17em;
     font-weight: var(--medium);
     margin-bottom: 1.12em;
 }
+
 .text-lg {
     font-size: var(--fs-lg);
     line-height: 1.67em;
 }
+
 .text-sm {
     font-size: var(--fs-sm);
     line-height: 1.43em;
 }
+
 .text-xs {
     font-size: var(--fs-xs);
     line-height: 1.5em;
@@ -865,8 +877,27 @@ input {
 }
 
 @media screen and (max-width: 576px) {
+    .container {
+        max-width: 100%;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
     .home {
-        padding: 4.4rem;
+        padding: 4.4rem 0;
+    }
+
+    :root {
+        --fs-h1: 1.75rem;
+        --fs-h2: 1.5rem;
+        --fs-lg: 0.938rem;
+        --fs-base: 0.875rem;
+        --fs-sm: 0.813rem;
+        --fs-xs: 0.75rem;
+    }
+    
+    .project__data {
+        padding: 1.5rem 1rem;
     }
 
     .project__categories {
@@ -878,7 +909,7 @@ input {
     }
 
     .testimonial__item {
-        padding: 0 1.5rem;
+        padding: 0 1rem;
     }
 
     .swiper-button-next img,
@@ -888,8 +919,23 @@ input {
     }
 
     @media screen and (max-width: 350px) {
+        .container {
+            padding-left: 0.75rem;
+            padding-right: 0.75rem;
+        }
+        
         :root {
-            --fs-h1: 2rem
+            --fs-h1: 1.5rem;
+            --fs-h2: 1.25rem;
+            --fs-lg: 0.875rem;
+            --fs-base: 0.813rem;
+            --fs-sm: 0.75rem;
+            --fs-xs: 0.688rem;
+        }
+
+        .contact__container {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
         }
 
         .home__work {
@@ -897,7 +943,8 @@ input {
         }
 
         .home__list {
-            font-size: 0.875rem;
+            /* font-size: 0.875rem; */
+            padding-left: 4.5em;
         }
 
         .home__list dd {
@@ -906,6 +953,14 @@ input {
 
         .home__social-link {
             font-size: 1.3rem;
+        }
+
+        .skills__item {
+            padding: 1.5rem 1rem;
+        }
+
+        .testimonial__description {
+            padding: 0 0.5rem;
         }
     }
 }
