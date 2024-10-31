@@ -47,6 +47,7 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 60px;
 }
 
 body,
@@ -179,6 +180,7 @@ input {
 .nav__toggle {
     display: none;
 }
+
 /* Active Link */
 .active-link {
     opacity: 0.5;
@@ -209,7 +211,7 @@ input {
 
 .scroll-header .nav__link:hover,
 .scroll-header .active-link {
-    color: var(--primary-color);
+    color: var(--text-color);
 }
 /* home */
 .home {
@@ -784,6 +786,20 @@ input {
         justify-content: center;
         align-items: center;
         transform: translateX(-100%);
+        transition: 0.3s;
+    }
+
+    .scroll-header .nav__link {
+        color: #fff;
+    }
+    
+    .scroll-header .nav__link:hover,
+    .scroll-header .active-link {
+        color: #fff;
+    }
+
+    .show-menu {
+        transform: translateX(0);
     }
 
     .nav__list {

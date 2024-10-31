@@ -8,6 +8,36 @@ let mixerProjects = mixitup('.project__container', {
     }
 });
 
+// Toggle menu
+const navMenu = document.getElementById('nav-menu'),
+    navToggle = document.getElementById('nav-toggle'),
+    navClose = document.getElementById('nav-close')
+
+// Show menu
+if(navToggle) {
+    navToggle.addEventListener('click', () => {
+        navMenu.classList.add('show-menu')
+    })
+}
+
+// Hide menu
+if(navClose) {
+    navClose.addEventListener('click', () => {
+        navMenu.classList.remove('show-menu')
+    })
+}
+
+// Logic to hide menu when navigation link is clicked
+const navLink = document.querySelectorAll('.nav__link')
+
+function linkAction() {
+    const navMenu = document.getElementById('nav-menu')
+    // when
+    navMenu.classList.remove('show-menu')
+}
+navLink.forEach((n) => n.addEventListener('click', linkAction))
+
+
 // Background Header
 function scrollHeader() {
     const header = document.getElementById('header');
