@@ -339,6 +339,12 @@ function showContactMessage(message, className) {
     contactMessage.textContent = message;
 }
 
+function resetRecaptcha() {
+    if(window.grecaptcha) {
+        grecaptcha.reset();
+    }
+}
+
 const sendEmail = (e) => {
     e.preventDefault();
     // check if the field is not empty first
@@ -356,8 +362,19 @@ const sendEmail = (e) => {
         return;
     }
 
+    if(!window.grecaptcha) {
+        showContactMessage('reCAPTCHA is unavailable right now. Please try again later.', 'color-dark');
+        return;
+    }
+
+    if(grecaptcha.getResponse().trim() === '') {
+        showContactMessage('Please complete the reCAPTCHA before sending.', 'color-dark');
+        return;
+    }
+
     if(contactWebsite.value.trim() !== '') {
         contactForm.reset();
+        resetRecaptcha();
         showContactMessage('Message sent', 'color-light');
         return;
     }
@@ -370,6 +387,7 @@ const sendEmail = (e) => {
         .then(() => {
             showContactMessage('Message sent', 'color-light');
             contactForm.reset();
+            resetRecaptcha();
 
             setTimeout(() => {
                 contactMessage.textContent = '';
@@ -377,6 +395,7 @@ const sendEmail = (e) => {
         })
         .catch((error) => {
             console.error('EmailJS send failed:', error);
+            resetRecaptcha();
             showContactMessage('Message failed to send. Please email me directly.', 'color-dark');
         })
         .finally(() => {
