@@ -430,26 +430,35 @@ input {
     margin-bottom: 0.8em;
 }
 
-.skills__proficiency {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.625rem;
-}
-
-.skills__bar,
-.skills__percentage {
-    height: 5px;
-    border-radius: 0.25rem;
-}
-
-.skills__bar {
-    background-color: var(--bg-color-alt);
+.skills__level {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2rem;
+    padding: 0.35rem 0.85rem;
     margin-bottom: 1.25rem;
+    border-radius: 999px;
+    font-family: var(--mono-font);
+    font-weight: var(--bold);
+    text-transform: uppercase;
 }
 
-.skills__percentage {
-    display: block;
-    background-color: var(--primary-color);
+.skills__level--proficient {
+    background-color: #dff3e4;
+    color: #1f6f3a;
+    border: 1px solid #8bc99b;
+}
+
+.skills__level--comfortable {
+    background-color: #e4eefb;
+    color: #245a8d;
+    border: 1px solid #92b7df;
+}
+
+.skills__level--learning {
+    background-color: #fff0d8;
+    color: #8a5a12;
+    border: 1px solid #e5bd72;
 }
 /* experience */
 .experience__container {
