@@ -619,13 +619,14 @@ input {
 }
 
 .contact__container {
-    grid-template-columns: 4fr 5fr 3fr;
+    grid-template-columns: 5fr 7fr;
     column-gap: 1.875rem;
     padding-top: 1.25rem;
 }
 
 .contact .section__title,
 .contact__list,
+.contact__link,
 .contact__social-link,
 ::placeholder,
 .contact__input,
@@ -637,6 +638,10 @@ input {
 
 .contact__list {
     margin-bottom: 3.25rem;
+}
+
+.contact__link {
+    overflow-wrap: anywhere;
 }
 
 .contact__list dt {
@@ -656,6 +661,15 @@ input {
 
 .contact__social-link {
     font-family: var(--roboto-font);
+    display: inline-flex;
+    align-items: center;
+    column-gap: 0.5rem;
+    opacity: 0.75;
+    transition: 0.3s;
+}
+
+.contact__social-link:hover {
+    opacity: 1;
 }
 
 .contact__form {
