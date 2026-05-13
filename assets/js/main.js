@@ -1,6 +1,42 @@
 // Github Projects
 const githubProjectsContainer = document.getElementById('github-projects');
 const pinnedProjectsUrl = 'assets/data/pinned-projects.json';
+const profileAgeElement = document.getElementById('profile-age');
+const copyrightYearElement = document.getElementById('copyright-year');
+const birthDate = {
+    year: 2005,
+    monthIndex: 3,
+    day: 28
+};
+
+function getAgeFromBirthDate(date, birthDateParts) {
+    let age = date.getFullYear() - birthDateParts.year;
+    const birthdayThisYear = new Date(
+        date.getFullYear(),
+        birthDateParts.monthIndex,
+        birthDateParts.day
+    );
+
+    if(date < birthdayThisYear) {
+        age -= 1;
+    }
+
+    return age;
+}
+
+function updateDateSensitiveText() {
+    const today = new Date();
+
+    if(profileAgeElement) {
+        profileAgeElement.textContent = String(getAgeFromBirthDate(today, birthDate));
+    }
+
+    if(copyrightYearElement) {
+        copyrightYearElement.textContent = String(today.getFullYear());
+    }
+}
+
+updateDateSensitiveText();
 
 function formatRepoName(name) {
     return name
