@@ -38,6 +38,37 @@ function createElement(tagName, className, text) {
     return element;
 }
 
+function setProjectStatus(message) {
+    githubProjectsContainer.replaceChildren(createElement('p', 'project__status text-lg', message));
+}
+
+function getSafeHttpUrl(url) {
+    if(!url) return null;
+
+    try {
+        const parsedUrl = new URL(url, window.location.href);
+
+        if(!['https:', 'http:'].includes(parsedUrl.protocol)) {
+            return null;
+        }
+
+        return parsedUrl.href;
+    } catch(error) {
+        return null;
+    }
+}
+
+function getLanguageClassName(languageName) {
+    if(!languageName) return '';
+
+    const slug = languageName
+        .toLowerCase()
+        .replace('#', 'sharp')
+        .replace(/[^a-z0-9]+/g, '');
+
+    return ` project__language-dot--${slug}`;
+}
+
 function normalisePinnedRepo(repo) {
     return {
         name: repo.name,
@@ -112,8 +143,10 @@ function createRepoCard(repo) {
 
     if(pinnedRepo.primaryLanguage?.name) {
         const language = createElement('span', 'project__language text-xs');
-        const languageDot = createElement('span', 'project__language-dot');
-        languageDot.style.backgroundColor = pinnedRepo.primaryLanguage.color || 'var(--text-color-alt)';
+        const languageDot = createElement(
+            'span',
+            `project__language-dot${getLanguageClassName(pinnedRepo.primaryLanguage.name)}`
+        );
         language.appendChild(languageDot);
         language.appendChild(document.createTextNode(pinnedRepo.primaryLanguage.name));
         header.appendChild(language);
@@ -152,10 +185,15 @@ function createRepoCard(repo) {
     meta.textContent = badges.join(' · ');
 
     const actions = createElement('div', 'project__actions');
-    actions.appendChild(createProjectLink(pinnedRepo.url, 'GitHub'));
+    const repoUrl = getSafeHttpUrl(pinnedRepo.url);
+    const homepageUrl = getSafeHttpUrl(pinnedRepo.homepageUrl);
 
-    if(pinnedRepo.homepageUrl) {
-        actions.appendChild(createProjectLink(pinnedRepo.homepageUrl, 'Live project'));
+    if(repoUrl) {
+        actions.appendChild(createProjectLink(repoUrl, 'GitHub'));
+    }
+
+    if(homepageUrl) {
+        actions.appendChild(createProjectLink(homepageUrl, 'Live project'));
     }
 
     data.appendChild(header);
@@ -188,17 +226,17 @@ async function loadGithubProjects() {
         }
 
         const repos = await response.json();
-        githubProjectsContainer.innerHTML = '';
+        githubProjectsContainer.replaceChildren();
 
         repos.forEach((repo) => {
             githubProjectsContainer.appendChild(createRepoCard(repo));
         });
 
         if(githubProjectsContainer.children.length === 0) {
-            githubProjectsContainer.innerHTML = '<p class="project__status text-lg">No pinned GitHub projects found.</p>';
+            setProjectStatus('No pinned GitHub projects found.');
         }
     } catch(error) {
-        githubProjectsContainer.innerHTML = '<p class="project__status text-lg">Pinned GitHub projects are unavailable right now.</p>';
+        setProjectStatus('Pinned GitHub projects are unavailable right now.');
     }
 }
 
@@ -279,7 +317,12 @@ const emailPublicKey = 'N5D1wHPHY2jFXNXdT';
 
 if(window.emailjs) {
     emailjs.init({
-        publicKey: emailPublicKey
+        publicKey: emailPublicKey,
+        blockHeadless: true,
+        limitRate: {
+            id: 'contact-form',
+            throttle: 30000
+        }
     });
 }
 
@@ -287,6 +330,7 @@ const contactForm = document.getElementById('contact-form'),
 contactName = document.getElementById('contact-name'),
 contactEmail = document.getElementById('contact-email'),
 Message = document.getElementById('message'),
+contactWebsite = document.getElementById('contact-website'),
 contactMessage = document.getElementById('contact-message');
 
 function showContactMessage(message, className) {
@@ -309,6 +353,12 @@ const sendEmail = (e) => {
 
     if(!window.emailjs) {
         showContactMessage('Email service is unavailable right now.', 'color-dark');
+        return;
+    }
+
+    if(contactWebsite.value.trim() !== '') {
+        contactForm.reset();
+        showContactMessage('Message sent', 'color-light');
         return;
     }
 

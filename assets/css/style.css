@@ -561,6 +561,35 @@ input {
     height: 0.65rem;
     border-radius: 50%;
     display: inline-block;
+    background-color: var(--text-color-alt);
+}
+
+.project__language-dot--javascript {
+    background-color: #f1e05a;
+}
+
+.project__language-dot--python {
+    background-color: #3572a5;
+}
+
+.project__language-dot--html {
+    background-color: #e34c26;
+}
+
+.project__language-dot--css {
+    background-color: #563d7c;
+}
+
+.project__language-dot--csharp {
+    background-color: #178600;
+}
+
+.project__language-dot--kotlin {
+    background-color: #a97bff;
+}
+
+.project__language-dot--java {
+    background-color: #b07219;
 }
 
 .project__description {
@@ -813,6 +842,12 @@ input {
 
 .contact__form-title {
     margin-bottom: 1.25em;
+}
+
+.contact__honeypot {
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
 }
 
 .contact__input-div {
