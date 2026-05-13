@@ -501,9 +501,7 @@ input {
 
 /* Testimonials */
 .testimonial__bg {
-    background: url(../img/bg.jpg);
-    background-size: cover;
-    background-position: 50%;
+    background-color: var(--primary-color);
     position: relative;
 }
 
@@ -575,10 +573,10 @@ input {
     content: '';
 }
 
-.swiper-button-next img,
-.swiper-button-prev img {
-    width: 20px;
-    height: 20px;
+.swiper-button-next,
+.swiper-button-prev {
+    color: #fff;
+    font-size: 1.75rem;
 }
 
 .swiper-pagination-bullets.swiper-pagination-horizontal {
@@ -601,9 +599,7 @@ input {
 
 /* Contact */
 .contact {
-    background: url(../img/bg.jpg);
-    background-size: cover;
-    background-position: 50%;
+    background-color: var(--primary-color);
     position: relative;
 }
 

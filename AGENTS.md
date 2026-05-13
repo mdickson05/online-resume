@@ -4,10 +4,10 @@
 
 This repository is a static online resume site. The main page is `index.html`.
 Styles live in `assets/css/style.css`, custom behavior lives in
-`assets/js/main.js`, and the vendored MixItUp library is
-`assets/js/mixitup.min.js`. Images, SVG icons, and the downloadable resume PDF
-are stored in `assets/img/`. Root files such as `CNAME`, `README.md`, and
-`LICENSE` support GitHub Pages deployment and project metadata.
+`assets/js/main.js`. The local profile photo is stored in `assets/img/`, while
+technology icons are loaded from public CDNs. Root files such as `CNAME`,
+`README.md`, and `LICENSE` support GitHub Pages deployment and project
+metadata.
 
 ## Build, Test, and Development Commands
 
