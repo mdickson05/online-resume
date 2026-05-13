@@ -108,14 +108,16 @@ const navMenu = document.getElementById('nav-menu'),
 // Show menu
 if(navToggle) {
     navToggle.addEventListener('click', () => {
-        navMenu.classList.add('show-menu')
+        navMenu.classList.add('show-menu');
+        navToggle.setAttribute('aria-expanded', 'true');
     })
 }
 
 // Hide menu
 if(navClose) {
     navClose.addEventListener('click', () => {
-        navMenu.classList.remove('show-menu')
+        navMenu.classList.remove('show-menu');
+        navToggle.setAttribute('aria-expanded', 'false');
     })
 }
 
@@ -125,7 +127,8 @@ const navLink = document.querySelectorAll('.nav__link')
 function linkAction() {
     const navMenu = document.getElementById('nav-menu')
     // when
-    navMenu.classList.remove('show-menu')
+    navMenu.classList.remove('show-menu');
+    navToggle.setAttribute('aria-expanded', 'false');
 }
 navLink.forEach((n) => n.addEventListener('click', linkAction))
 

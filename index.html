@@ -11,12 +11,13 @@
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
     
-    <title>Portfolio Website</title>
+    <title>Marcus Dickson | Backend & Infrastructure Software Developer</title>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <!-- Header -->
     <header class="header" id="header">
-        <nav class="nav container">
+        <nav class="nav container" aria-label="Primary navigation">
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
                     <li>
@@ -35,21 +36,21 @@
                         <a href="#contact" class="nav__link">Contact</a>
                     </li>
                 </ul>
-                <div class="nav__close" id="nav-close">
+                <button type="button" class="nav__close" id="nav-close" aria-label="Close navigation menu">
                     <i class="ri-close-fill"></i>
-                </div>
+                </button>
             </div>
-            <div class="nav__toggle" id="nav-toggle">
+            <button type="button" class="nav__toggle" id="nav-toggle" aria-label="Open navigation menu" aria-controls="nav-menu" aria-expanded="false">
                 <i class="ri-menu-fill"></i>
-            </div>
+            </button>
         </nav>
     </header>
     <!-- Main -->
-    <main class="main">
+    <main class="main" id="main-content">
         <!-- Home -->
         <section class="home" id="home">
             <div class="home__container container grid">
-                <img src="assets/img/profile-picture.jpg" alt="" class="home__img">
+                <img src="assets/img/profile-picture.jpg" alt="Marcus Dickson" class="home__img">
                 <div class="home__data">
                     <h1 class="home__name">Marcus Dickson</h1>
                     <p class="home__work">Backend & Infrastructure Software Developer</p>
@@ -62,10 +63,10 @@
                         <dd>Perth, Western Australia</dd>
                     </dl>
                     <div class="home__socials">
-                        <a href="https://github.com/mdickson05" target="_blank" class="home__social-link">
+                        <a href="https://github.com/mdickson05" target="_blank" rel="noreferrer noopener" class="home__social-link" aria-label="GitHub profile">
                             <i class="ri-github-fill"></i>
                         </a>
-                        <a href="https://linkedin.com/in/marcus-dickson-6b492a2a0" target="_blank" class="home__social-link">
+                        <a href="https://linkedin.com/in/marcus-dickson-6b492a2a0" target="_blank" rel="noreferrer noopener" class="home__social-link" aria-label="LinkedIn profile">
                             <i class="ri-linkedin-box-fill"></i>
                         </a>
                     </div>
@@ -365,6 +366,7 @@
                         <!-- <p class="contact__form-title">Or just message me here</p> -->
                         <form action="" id="contact-form">
                             <div class="contact__input-div">
+                                <label for="contact-name" class="sr-only">Your name</label>
                                 <input type="text" 
                                 name = "name"
                                 placeholder="Your name"
@@ -376,6 +378,7 @@
                             </div>
         
                             <div class="contact__input-div">
+                                <label for="contact-email" class="sr-only">Your email</label>
                                 <input type="email" 
                                 name = "email"
                                 placeholder="Your email"
@@ -386,6 +389,7 @@
                                 >
                             </div>
                             <div class="contact__input-div">
+                                <label for="message" class="sr-only">Message</label>
                                 <textarea 
                                     name = "message"
                                     placeholder="Type your message here"
@@ -397,7 +401,7 @@
                                 ></textarea>
                             </div>
         
-                            <p class="contact__message text-sm" id="contact-message"></p>
+                            <p class="contact__message text-sm" id="contact-message" aria-live="polite"></p>
         
                             <button type="submit" class="button contact__button">
                                 SEND
