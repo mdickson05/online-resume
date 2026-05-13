@@ -166,55 +166,68 @@ var testiSwiper = new Swiper(".testimonial__container", {
 });
 
 // Contact Form
+const emailServiceId = 'service_csloze7';
+const emailTemplateId = 'template_s08bmol';
+const emailPublicKey = 'N5D1wHPHY2jFXNXdT';
+
+if(window.emailjs) {
+    emailjs.init({
+        publicKey: emailPublicKey
+    });
+}
+
 const contactForm = document.getElementById('contact-form'),
 contactName = document.getElementById('contact-name'),
 contactEmail = document.getElementById('contact-email'),
 Message = document.getElementById('message'),
 contactMessage = document.getElementById('contact-message');
 
+function showContactMessage(message, className) {
+    contactMessage.classList.remove('color-light', 'color-dark');
+    contactMessage.classList.add(className);
+    contactMessage.textContent = message;
+}
+
 const sendEmail = (e) => {
     e.preventDefault();
     // check if the field is not empty first
     if (
-        contactName.value === '' || 
-        contactEmail.value === '' ||
-        Message.value === ''
+        contactName.value.trim() === '' || 
+        contactEmail.value.trim() === '' ||
+        Message.value.trim() === ''
     ) {
-        // make the Message text above the button change colour
-        contactMessage.classList.remove('color-light');
-        contactMessage.classList.add('color-dark');
-
-        // Show a new message
-        contactMessage.textContent = 'Write all the input fields';
-    } else {
-        // serviceID - templateID - #form - publickey
-        emailjs.sendForm(
-            'service_csloze7',
-            'template_s08bmol',
-            '#contact-form', 
-            'N5D1wHPHY2jFXNXdT'
-        )
-        .then( 
-            () => {
-                // show message and add colour
-                contactMessage.classList.add('color-light');
-                contactMessage.textContent = 'Message sent ✔️';
-
-                // remove message after 5 seconds
-                setTimeout(() => {
-                    contactMessage.textContent = '';
-                }, 5000);
-            },
-            (error) => {
-                alert('Sorry, an unknown error has occurred with the contact form. Please try again!',  error);
-            }
-        );
-
-        // clear input fields
-        contactName.value = '';
-        contactEmail.value = '';
-        Message.value = '';
+        showContactMessage('Write all the input fields', 'color-dark');
+        return;
     }
+
+    if(!window.emailjs) {
+        showContactMessage('Email service is unavailable right now.', 'color-dark');
+        return;
+    }
+
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+    submitButton.disabled = true;
+    submitButton.textContent = 'SENDING...';
+
+    emailjs.sendForm(emailServiceId, emailTemplateId, contactForm)
+        .then(() => {
+            showContactMessage('Message sent', 'color-light');
+            contactForm.reset();
+
+            setTimeout(() => {
+                contactMessage.textContent = '';
+            }, 5000);
+        })
+        .catch((error) => {
+            console.error('EmailJS send failed:', error);
+            showContactMessage('Message failed to send. Please email me directly.', 'color-dark');
+        })
+        .finally(() => {
+            submitButton.disabled = false;
+            submitButton.textContent = 'SEND';
+        });
 }
 
-contactForm.addEventListener('submit', sendEmail);
+if(contactForm) {
+    contactForm.addEventListener('submit', sendEmail);
+}
