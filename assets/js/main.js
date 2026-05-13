@@ -1,12 +1,104 @@
-// Mixitup Filter
-let mixerProjects = mixitup('.project__container', {
-    selectors: {
-        target: '.project__item'
-    },
-    animation: {
-        duration: 300
+// Github Projects
+const githubProjectsContainer = document.getElementById('github-projects');
+const pinnedProjectsUrl = 'assets/data/pinned-projects.json';
+
+function formatRepoName(name) {
+    return name
+        .replace(/[-_]+/g, ' ')
+        .replace(/\b\w/g, (letter) => letter.toUpperCase());
+}
+
+function createRepoTag(text) {
+    const item = document.createElement('li');
+    item.textContent = text;
+    return item;
+}
+
+function normalisePinnedRepo(repo) {
+    return {
+        name: repo.name,
+        description: repo.description,
+        language: repo.language,
+        stars: repo.stars,
+        url: repo.url,
+        homepageUrl: repo.homepageUrl
+    };
+}
+
+function createRepoCard(repo) {
+    const pinnedRepo = normalisePinnedRepo(repo);
+    const card = document.createElement('div');
+    card.className = 'project__item grid';
+
+    const data = document.createElement('div');
+    data.className = 'project__data';
+
+    const title = document.createElement('h3');
+    title.className = 'project__title text-lg';
+    title.textContent = formatRepoName(pinnedRepo.name);
+
+    const description = document.createElement('p');
+    description.className = 'project__description';
+    description.textContent = pinnedRepo.description || 'Pinned GitHub repository.';
+
+    const stackTitle = document.createElement('h4');
+    stackTitle.className = 'project__stack text-xs';
+    stackTitle.textContent = 'DETAILS:';
+
+    const tags = document.createElement('ul');
+    tags.className = 'tags text-sm';
+
+    if(pinnedRepo.language) {
+        tags.appendChild(createRepoTag(pinnedRepo.language));
     }
-});
+
+    if(pinnedRepo.stars > 0) {
+        tags.appendChild(createRepoTag(`${pinnedRepo.stars} stars`));
+    }
+
+    const link = document.createElement('a');
+    link.className = 'project__link text-sm';
+    link.href = pinnedRepo.homepageUrl || pinnedRepo.url;
+    link.target = '_blank';
+    link.rel = 'noreferrer noopener';
+    link.textContent = pinnedRepo.homepageUrl ? 'View Project' : 'View on GitHub';
+
+    data.appendChild(title);
+    data.appendChild(description);
+    data.appendChild(stackTitle);
+    data.appendChild(tags);
+    data.appendChild(link);
+    card.appendChild(data);
+
+    return card;
+}
+
+async function loadGithubProjects() {
+    if(!githubProjectsContainer) return;
+
+    try {
+        const response = await fetch(pinnedProjectsUrl);
+
+        if(!response.ok) {
+            throw new Error('Pinned project data could not be loaded.');
+        }
+
+        const repos = await response.json();
+        githubProjectsContainer.innerHTML = '';
+
+        repos.forEach((repo) => {
+            githubProjectsContainer.appendChild(createRepoCard(repo));
+        });
+
+        if(githubProjectsContainer.children.length === 0) {
+            githubProjectsContainer.innerHTML = '<p class="project__status text-lg">No pinned GitHub projects found.</p>';
+        }
+    } catch(error) {
+        githubProjectsContainer.innerHTML = '<p class="project__status text-lg">Pinned GitHub projects are unavailable right now.</p>';
+    }
+}
+
+loadGithubProjects();
 
 // Toggle menu
 const navMenu = document.getElementById('nav-menu'),
@@ -58,16 +150,6 @@ function activeLink() {
 }
 
 link.forEach((a) => a.addEventListener('click', activeLink));
-
-// Active Work
-const work = document.querySelectorAll('.category__btn');
-
-function activeWork() {
-    work.forEach((a) => a.classList.remove('active-work'));
-    this.classList.add('active-work');
-}
-
-work.forEach((a) => a.addEventListener('click', activeWork));
 
 // Swiper.js
 var testiSwiper = new Swiper(".testimonial__container", {

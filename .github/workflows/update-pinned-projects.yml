@@ -1,0 +1,68 @@
+name: Update pinned projects
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 2 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  update-pinned-projects:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Fetch pinned GitHub repositories
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.PINNED_PROJECTS_TOKEN || github.token }}
+          script: |
+            const fs = require('fs');
+
+            const username = 'mdickson05';
+            const query = `
+              query($login: String!) {
+                user(login: $login) {
+                  pinnedItems(first: 6, types: REPOSITORY) {
+                    nodes {
+                      ... on Repository {
+                        name
+                        description
+                        url
+                        homepageUrl
+                        stargazerCount
+                        primaryLanguage {
+                          name
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            `;
+
+            const result = await github.graphql(query, { login: username });
+            const projects = result.user.pinnedItems.nodes.map((repo) => ({
+              name: repo.name,
+              description: repo.description,
+              language: repo.primaryLanguage?.name || null,
+              stars: repo.stargazerCount,
+              url: repo.url,
+              homepageUrl: repo.homepageUrl || null
+            }));
+
+            fs.mkdirSync('assets/data', { recursive: true });
+            fs.writeFileSync(
+              'assets/data/pinned-projects.json',
+              `${JSON.stringify(projects, null, 2)}\n`
+            );
+
+      - name: Commit pinned project data
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "CHORE: Update pinned project data"
+          file_pattern: assets/data/pinned-projects.json
