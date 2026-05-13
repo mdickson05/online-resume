@@ -1,34 +1,114 @@
 [
   {
     "name": "QDecide",
+    "nameWithOwner": "mdickson05/QDecide",
     "description": "A web application that serves both classical and quantum machine learning predictions for stock price movements.",
-    "language": "JavaScript",
-    "stars": 0,
     "url": "https://github.com/mdickson05/QDecide",
-    "homepageUrl": null
+    "homepageUrl": null,
+    "primaryLanguage": {
+      "name": "JavaScript",
+      "color": "#f1e05a"
+    },
+    "languages": [],
+    "topics": [],
+    "stats": {
+      "stars": 0,
+      "forks": 0,
+      "openIssues": 0,
+      "openPullRequests": 0
+    },
+    "dates": {
+      "createdAt": null,
+      "updatedAt": null,
+      "pushedAt": null
+    },
+    "flags": {
+      "isArchived": false,
+      "isFork": false
+    }
   },
   {
     "name": "sql-olympics-server",
+    "nameWithOwner": "mdickson05/sql-olympics-server",
     "description": "Web app that connects to MySQL database to display pre-defined queries, procedures and views via SQL and python",
-    "language": "HTML",
-    "stars": 0,
     "url": "https://github.com/mdickson05/sql-olympics-server",
-    "homepageUrl": null
+    "homepageUrl": null,
+    "primaryLanguage": {
+      "name": "HTML",
+      "color": "#e34c26"
+    },
+    "languages": [],
+    "topics": [],
+    "stats": {
+      "stars": 0,
+      "forks": 0,
+      "openIssues": 0,
+      "openPullRequests": 0
+    },
+    "dates": {
+      "createdAt": null,
+      "updatedAt": null,
+      "pushedAt": null
+    },
+    "flags": {
+      "isArchived": false,
+      "isFork": false
+    }
   },
   {
     "name": "BankDBProject",
+    "nameWithOwner": "mdickson05/BankDBProject",
     "description": "A bank data web service in ASP.NET MVC Core that uses SQLite to store data locally. Created in collaboration with @sam-eaves",
-    "language": "C#",
-    "stars": 0,
     "url": "https://github.com/mdickson05/BankDBProject",
-    "homepageUrl": null
+    "homepageUrl": null,
+    "primaryLanguage": {
+      "name": "C#",
+      "color": "#178600"
+    },
+    "languages": [],
+    "topics": [],
+    "stats": {
+      "stars": 0,
+      "forks": 0,
+      "openIssues": 0,
+      "openPullRequests": 0
+    },
+    "dates": {
+      "createdAt": null,
+      "updatedAt": null,
+      "pushedAt": null
+    },
+    "flags": {
+      "isArchived": false,
+      "isFork": false
+    }
   },
   {
     "name": "ConnectFourApp",
+    "nameWithOwner": "mdickson05/ConnectFourApp",
     "description": "Connect Four App developed in Kotlin that stores, updates and retreives global player statistics using Firebase. Made in collaboration with @charlesjcope and @jet1e.",
-    "language": "Kotlin",
-    "stars": 0,
     "url": "https://github.com/mdickson05/ConnectFourApp",
-    "homepageUrl": null
+    "homepageUrl": null,
+    "primaryLanguage": {
+      "name": "Kotlin",
+      "color": "#A97BFF"
+    },
+    "languages": [],
+    "topics": [],
+    "stats": {
+      "stars": 0,
+      "forks": 0,
+      "openIssues": 0,
+      "openPullRequests": 0
+    },
+    "dates": {
+      "createdAt": null,
+      "updatedAt": null,
+      "pushedAt": null
+    },
+    "flags": {
+      "isArchived": false,
+      "isFork": false
+    }
   }
 ]

@@ -31,12 +31,42 @@ jobs:
                     nodes {
                       ... on Repository {
                         name
+                        nameWithOwner
                         description
                         url
                         homepageUrl
+                        forkCount
                         stargazerCount
+                        createdAt
+                        updatedAt
+                        pushedAt
+                        isArchived
+                        isFork
                         primaryLanguage {
                           name
+                          color
+                        }
+                        languages(first: 5, orderBy: { field: SIZE, direction: DESC }) {
+                          edges {
+                            size
+                            node {
+                              name
+                              color
+                            }
+                          }
+                        }
+                        repositoryTopics(first: 6) {
+                          nodes {
+                            topic {
+                              name
+                            }
+                          }
+                        }
+                        issues(first: 1, states: OPEN) {
+                          totalCount
+                        }
+                        pullRequests(first: 1, states: OPEN) {
+                          totalCount
                         }
                       }
                     }
@@ -48,11 +78,37 @@ jobs:
             const result = await github.graphql(query, { login: username });
             const projects = result.user.pinnedItems.nodes.map((repo) => ({
               name: repo.name,
+              nameWithOwner: repo.nameWithOwner,
               description: repo.description,
-              language: repo.primaryLanguage?.name || null,
-              stars: repo.stargazerCount,
               url: repo.url,
-              homepageUrl: repo.homepageUrl || null
+              homepageUrl: repo.homepageUrl || null,
+              primaryLanguage: repo.primaryLanguage
+                ? {
+                    name: repo.primaryLanguage.name,
+                    color: repo.primaryLanguage.color
+                  }
+                : null,
+              languages: repo.languages.edges.map((edge) => ({
+                name: edge.node.name,
+                color: edge.node.color,
+                size: edge.size
+              })),
+              topics: repo.repositoryTopics.nodes.map((node) => node.topic.name),
+              stats: {
+                stars: repo.stargazerCount,
+                forks: repo.forkCount,
+                openIssues: repo.issues.totalCount,
+                openPullRequests: repo.pullRequests.totalCount
+              },
+              dates: {
+                createdAt: repo.createdAt,
+                updatedAt: repo.updatedAt,
+                pushedAt: repo.pushedAt
+              },
+              flags: {
+                isArchived: repo.isArchived,
+                isFork: repo.isFork
+              }
             }));
 
             fs.mkdirSync('assets/data', { recursive: true });

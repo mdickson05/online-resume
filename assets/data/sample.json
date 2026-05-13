@@ -1,0 +1,45 @@
+[
+  {
+    "name": "QDecide",
+    "nameWithOwner": "mdickson05/QDecide",
+    "description": "A web application that serves both classical and quantum machine learning predictions for stock price movements.",
+    "url": "https://github.com/mdickson05/QDecide",
+    "homepageUrl": null,
+    "primaryLanguage": {
+      "name": "JavaScript",
+      "color": "#f1e05a"
+    },
+    "languages": [
+      {
+        "name": "JavaScript",
+        "color": "#f1e05a",
+        "size": 154321
+      },
+      {
+        "name": "Python",
+        "color": "#3572A5",
+        "size": 88342
+      }
+    ],
+    "topics": [
+      "machine-learning",
+      "quantum-computing",
+      "portfolio-optimisation"
+    ],
+    "stats": {
+      "stars": 0,
+      "forks": 0,
+      "openIssues": 0,
+      "openPullRequests": 0
+    },
+    "dates": {
+      "createdAt": "2025-02-01T04:00:00Z",
+      "updatedAt": "2026-05-01T04:00:00Z",
+      "pushedAt": "2026-05-01T04:00:00Z"
+    },
+    "flags": {
+      "isArchived": false,
+      "isFork": false
+    }
+  }
+]

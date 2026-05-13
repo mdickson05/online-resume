@@ -14,15 +14,78 @@ function createRepoTag(text) {
     return item;
 }
 
+function formatDate(dateValue) {
+    if(!dateValue) return null;
+
+    return new Intl.DateTimeFormat('en-AU', {
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric'
+    }).format(new Date(dateValue));
+}
+
+function createElement(tagName, className, text) {
+    const element = document.createElement(tagName);
+
+    if(className) {
+        element.className = className;
+    }
+
+    if(text) {
+        element.textContent = text;
+    }
+
+    return element;
+}
+
 function normalisePinnedRepo(repo) {
     return {
         name: repo.name,
+        nameWithOwner: repo.nameWithOwner,
         description: repo.description,
-        language: repo.language,
-        stars: repo.stars,
+        primaryLanguage: repo.primaryLanguage || (repo.language ? { name: repo.language, color: null } : null),
+        languages: repo.languages || [],
+        topics: repo.topics || [],
+        stats: {
+            stars: repo.stats?.stars ?? repo.stars ?? 0,
+            forks: repo.stats?.forks ?? 0,
+            openIssues: repo.stats?.openIssues ?? 0,
+            openPullRequests: repo.stats?.openPullRequests ?? 0
+        },
+        dates: repo.dates || {
+            createdAt: null,
+            updatedAt: null,
+            pushedAt: null
+        },
+        flags: repo.flags || {
+            isArchived: false,
+            isFork: false
+        },
         url: repo.url,
         homepageUrl: repo.homepageUrl
     };
+}
+
+function createProjectStat(label, value) {
+    const item = createElement('li', 'project__stat');
+    const valueElement = createElement('span', 'project__stat-value', String(value));
+    const labelElement = createElement('span', 'project__stat-label', label);
+
+    item.appendChild(valueElement);
+    item.appendChild(labelElement);
+
+    return item;
+}
+
+function createProjectLink(href, text) {
+    const link = document.createElement('a');
+    link.className = 'project__link text-sm';
+    link.href = href;
+    link.target = '_blank';
+    link.rel = 'noreferrer noopener';
+    link.textContent = text;
+
+    return link;
 }
 
 function createRepoCard(repo) {
@@ -33,41 +96,82 @@ function createRepoCard(repo) {
     const data = document.createElement('div');
     data.className = 'project__data';
 
-    const title = document.createElement('h3');
-    title.className = 'project__title text-lg';
+    const header = createElement('div', 'project__header');
+    const titleGroup = createElement('div', 'project__title-group');
+    const title = createElement('h3', 'project__title text-lg');
     title.textContent = formatRepoName(pinnedRepo.name);
 
-    const description = document.createElement('p');
-    description.className = 'project__description';
+    const repoName = createElement('p', 'project__repo-name text-xs', pinnedRepo.nameWithOwner);
+    titleGroup.appendChild(title);
+
+    if(pinnedRepo.nameWithOwner) {
+        titleGroup.appendChild(repoName);
+    }
+
+    header.appendChild(titleGroup);
+
+    if(pinnedRepo.primaryLanguage?.name) {
+        const language = createElement('span', 'project__language text-xs');
+        const languageDot = createElement('span', 'project__language-dot');
+        languageDot.style.backgroundColor = pinnedRepo.primaryLanguage.color || 'var(--text-color-alt)';
+        language.appendChild(languageDot);
+        language.appendChild(document.createTextNode(pinnedRepo.primaryLanguage.name));
+        header.appendChild(language);
+    }
+
+    const description = createElement('p', 'project__description');
     description.textContent = pinnedRepo.description || 'Pinned GitHub repository.';
 
-    const stackTitle = document.createElement('h4');
-    stackTitle.className = 'project__stack text-xs';
-    stackTitle.textContent = 'DETAILS:';
+    const topics = createElement('ul', 'project__topics text-xs');
+    pinnedRepo.topics.slice(0, 4).forEach((topic) => {
+        topics.appendChild(createRepoTag(topic));
+    });
 
-    const tags = document.createElement('ul');
-    tags.className = 'tags text-sm';
+    const stats = createElement('ul', 'project__stats text-xs');
+    stats.appendChild(createProjectStat('Stars', pinnedRepo.stats.stars));
+    stats.appendChild(createProjectStat('Forks', pinnedRepo.stats.forks));
+    stats.appendChild(createProjectStat('Issues', pinnedRepo.stats.openIssues));
+    stats.appendChild(createProjectStat('PRs', pinnedRepo.stats.openPullRequests));
 
-    if(pinnedRepo.language) {
-        tags.appendChild(createRepoTag(pinnedRepo.language));
+    const meta = createElement('p', 'project__meta text-xs');
+    const pushedDate = formatDate(pinnedRepo.dates.pushedAt);
+    const badges = [];
+
+    if(pushedDate) {
+        badges.push(`Last pushed ${pushedDate}`);
     }
 
-    if(pinnedRepo.stars > 0) {
-        tags.appendChild(createRepoTag(`${pinnedRepo.stars} stars`));
+    if(pinnedRepo.flags.isFork) {
+        badges.push('Fork');
     }
 
-    const link = document.createElement('a');
-    link.className = 'project__link text-sm';
-    link.href = pinnedRepo.homepageUrl || pinnedRepo.url;
-    link.target = '_blank';
-    link.rel = 'noreferrer noopener';
-    link.textContent = pinnedRepo.homepageUrl ? 'View Project' : 'View on GitHub';
+    if(pinnedRepo.flags.isArchived) {
+        badges.push('Archived');
+    }
 
-    data.appendChild(title);
+    meta.textContent = badges.join(' · ');
+
+    const actions = createElement('div', 'project__actions');
+    actions.appendChild(createProjectLink(pinnedRepo.url, 'GitHub'));
+
+    if(pinnedRepo.homepageUrl) {
+        actions.appendChild(createProjectLink(pinnedRepo.homepageUrl, 'Live project'));
+    }
+
+    data.appendChild(header);
     data.appendChild(description);
-    data.appendChild(stackTitle);
-    data.appendChild(tags);
-    data.appendChild(link);
+
+    if(topics.children.length > 0) {
+        data.appendChild(topics);
+    }
+
+    data.appendChild(stats);
+
+    if(meta.textContent) {
+        data.appendChild(meta);
+    }
+
+    data.appendChild(actions);
     card.appendChild(data);
 
     return card;
