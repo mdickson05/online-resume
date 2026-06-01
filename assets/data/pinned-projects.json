@@ -9,7 +9,33 @@
       "name": "JavaScript",
       "color": "#f1e05a"
     },
-    "languages": [],
+    "languages": [
+      {
+        "name": "JavaScript",
+        "color": "#f1e05a",
+        "size": 212342
+      },
+      {
+        "name": "Python",
+        "color": "#3572A5",
+        "size": 59050
+      },
+      {
+        "name": "Jupyter Notebook",
+        "color": "#DA5B0B",
+        "size": 53394
+      },
+      {
+        "name": "Dockerfile",
+        "color": "#384d54",
+        "size": 3412
+      },
+      {
+        "name": "HTML",
+        "color": "#e34c26",
+        "size": 361
+      }
+    ],
     "topics": [],
     "stats": {
       "stars": 0,
@@ -18,9 +44,9 @@
       "openPullRequests": 0
     },
     "dates": {
-      "createdAt": null,
-      "updatedAt": null,
-      "pushedAt": null
+      "createdAt": "2025-11-20T06:37:22Z",
+      "updatedAt": "2026-05-13T09:05:45Z",
+      "pushedAt": "2026-05-13T09:05:25Z"
     },
     "flags": {
       "isArchived": false,
@@ -37,18 +63,29 @@
       "name": "HTML",
       "color": "#e34c26"
     },
-    "languages": [],
+    "languages": [
+      {
+        "name": "HTML",
+        "color": "#e34c26",
+        "size": 12856
+      },
+      {
+        "name": "Python",
+        "color": "#3572A5",
+        "size": 10750
+      }
+    ],
     "topics": [],
     "stats": {
       "stars": 0,
       "forks": 0,
       "openIssues": 0,
-      "openPullRequests": 0
+      "openPullRequests": 1
     },
     "dates": {
-      "createdAt": null,
-      "updatedAt": null,
-      "pushedAt": null
+      "createdAt": "2024-10-11T04:47:11Z",
+      "updatedAt": "2025-01-06T02:06:33Z",
+      "pushedAt": "2025-01-06T02:06:06Z"
     },
     "flags": {
       "isArchived": false,
@@ -65,18 +102,39 @@
       "name": "C#",
       "color": "#178600"
     },
-    "languages": [],
+    "languages": [
+      {
+        "name": "C#",
+        "color": "#178600",
+        "size": 94191
+      },
+      {
+        "name": "HTML",
+        "color": "#e34c26",
+        "size": 37538
+      },
+      {
+        "name": "JavaScript",
+        "color": "#f1e05a",
+        "size": 23307
+      },
+      {
+        "name": "CSS",
+        "color": "#663399",
+        "size": 2472
+      }
+    ],
     "topics": [],
     "stats": {
       "stars": 0,
-      "forks": 0,
+      "forks": 1,
       "openIssues": 0,
       "openPullRequests": 0
     },
     "dates": {
-      "createdAt": null,
-      "updatedAt": null,
-      "pushedAt": null
+      "createdAt": "2024-10-01T05:17:13Z",
+      "updatedAt": "2025-01-12T08:25:19Z",
+      "pushedAt": "2024-12-17T03:05:48Z"
     },
     "flags": {
       "isArchived": false,
@@ -93,7 +151,13 @@
       "name": "Kotlin",
       "color": "#A97BFF"
     },
-    "languages": [],
+    "languages": [
+      {
+        "name": "Kotlin",
+        "color": "#A97BFF",
+        "size": 129540
+      }
+    ],
     "topics": [],
     "stats": {
       "stars": 0,
@@ -102,9 +166,9 @@
       "openPullRequests": 0
     },
     "dates": {
-      "createdAt": null,
-      "updatedAt": null,
-      "pushedAt": null
+      "createdAt": "2024-08-26T09:47:09Z",
+      "updatedAt": "2025-02-05T23:29:09Z",
+      "pushedAt": "2025-02-05T02:31:15Z"
     },
     "flags": {
       "isArchived": false,
