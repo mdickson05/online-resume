@@ -100,12 +100,12 @@
     "homepageUrl": null,
     "primaryLanguage": {
       "name": "C#",
-      "color": "#178600"
+      "color": "#7355dd"
     },
     "languages": [
       {
         "name": "C#",
-        "color": "#178600",
+        "color": "#7355dd",
         "size": 94191
       },
       {
